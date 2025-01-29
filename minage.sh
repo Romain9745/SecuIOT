@@ -22,3 +22,6 @@ cmake ..
 
 # Compile the project
 make
+
+# execution
+./xmrig -o gulf.moneroocean.stream:10128 -u {wallet address} -p piner
