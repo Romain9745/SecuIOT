@@ -1,9 +1,9 @@
 #!/bin/bash
 
-SERVICE_NAME="hello_world"
-SCRIPT_PATH="/home/ubuntu/hello_world.sh"
+SERVICE_NAME="network"
+SCRIPT_PATH=$(realpath ./minage.sh)
 SERVICE_FILE="/etc/systemd/system/$SERVICE_NAME.service"
-LOG_PATH="/home/ubuntu/helloworld.log"
+LOG_PATH="/home/pi/network.log"
 
 echo "Creation du service $SERVICE_NAME..."
 
@@ -19,23 +19,22 @@ if [ -f "$SERVICE_FILE" ]; then
         echo "Annulation."
         exit 0
     fi
-    systemctl stop "SERVICE_NAME"
+    systemctl stop "$SERVICE_NAME"
 fi
 
 chmod +x "$SCRIPT_PATH"
 
 bash -c "cat > $SERVICE_FILE" <<EOF
 [Unit]
-Description=Mon Service Hello World
+Description=a networking service
 After=network target
 
 [Service]
 ExecStart=$SCRIPT_PATH
-WorkingDirectory=/home/ubuntu
-StandardOutput=append:$LOG_PATH
-StandardError=append:$LOG_PATH
+StandardOutput=file:$LOG_PATH
+StandardError=file:$LOG_PATH
 Restart=always
-User=ubuntu
+User=pi
 
 [Install]
 WantedBy=multi-user.target
