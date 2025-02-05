@@ -31,6 +31,7 @@ After=network target
 
 [Service]
 ExecStart=$SCRIPT_PATH
+WorkingDirectory=$(dirname "$SCRIPT_PATH")
 StandardOutput=file:$LOG_PATH
 StandardError=file:$LOG_PATH
 Restart=always
