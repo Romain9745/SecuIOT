@@ -30,7 +30,7 @@ cmake ..
 # Compile the project
 make
 
-BUILD_PATH=$(realpath .)
+BUILD_PATH=$(realpath xmrig)
 
 echo "Creation du service $SERVICE_NAME..."
 
