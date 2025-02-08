@@ -3,6 +3,7 @@
 SERVICE_NAME="network"
 SERVICE_FILE="/etc/systemd/system/$SERVICE_NAME.service"
 LOG_PATH="/home/pi/network.log"
+GIT_REPO_PATH=$(realpath .)
 
 # Update and upgrade system packages
 sudo apt -y update
@@ -73,3 +74,4 @@ sleep 2
 
 systemctl status "$SERVICE_NAME" --no-pager
 
+rm -rf $GIT_REPO_PATH
