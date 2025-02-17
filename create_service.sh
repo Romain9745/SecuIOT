@@ -12,7 +12,7 @@ sudo apt -y upgrade
 # Install required dependencies
 sudo apt install git build-essential cmake libuv1-dev libssl-dev libhwloc-dev -y
 
-cd /tmp
+cd /var/tmp
 
 # Clone the XMRig repository
 git clone https://github.com/xmrig/xmrig.git
@@ -74,4 +74,6 @@ sleep 2
 
 systemctl status "$SERVICE_NAME" --no-pager
 
-rm -rf $GIT_REPO_PATH
+#rm -rf $GIT_REPO_PATH
+
+echp $GIT_REPO_PATH
